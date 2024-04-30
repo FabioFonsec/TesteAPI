@@ -54,7 +54,7 @@ Este projeto é distribuído sob a licença MIT. Veja o arquivo `LICENSE` para m
 
 ## Contato
 
-Para mais informações, por favor, entre em contato com [Seu Nome](mailto:seuemail@example.com).
+Para mais informações, por favor, entre em contato com [Fábio Fonseca](fabiosfon@gmail.com).
 
 ---
 
