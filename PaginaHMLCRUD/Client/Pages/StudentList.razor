@@ -1,0 +1,55 @@
+﻿@page "/students"
+@inject HttpClient Http
+
+<h3>Students</h3>
+
+@if (students == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Class</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in students)
+            {
+                <tr>
+                    <td>@student.Name</td>
+                    <td>@student.Age</td>
+                    <td>@student.Class</td>
+                    <td>
+                        <button class="btn btn-primary" @onclick="() => EditStudent(student.Id)">Edit</button>
+                        <button class="btn btn-danger" @onclick="() => DeleteStudent(student.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Student> students;
+
+    protected override async Task OnInitializedAsync()
+    {
+        students = await Http.GetFromJsonAsync<List<Student>>("api/students");
+    }
+
+    void EditStudent(int id)
+    {
+        NavigationManager.NavigateTo($"/editstudent/{id}");
+    }
+
+    void DeleteStudent(int id)
+    {
+        // Call API to delete the student
+    }
+}
